@@ -14,7 +14,7 @@ function Login() {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:8000/api/v1/user/login', {
+      const response = await fetch('https://my-backend-ocyz.onrender.com/api/v1/user/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -50,7 +50,7 @@ function Login() {
     const token = response.credential
     console.log(token)
 
-    const userData = await fetch("http://localhost:8000/api/v1/user/login",{
+    const userData = await fetch("https://my-backend-ocyz.onrender.com/api/v1/user/login",{
       method:'POST',
 
       headers:{

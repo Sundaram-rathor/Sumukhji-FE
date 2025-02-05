@@ -39,7 +39,7 @@ function Admin() {
     data.append('image', formData.image);
     data.append('specification', formData.specification)
     try {
-      const response = await fetch(`http://localhost:8000/api/v1/admin/createproduct`, {
+      const response = await fetch(`https://my-backend-ocyz.onrender.com/api/v1/admin/createproduct`, {
         method: 'POST',
         body: data,
       });

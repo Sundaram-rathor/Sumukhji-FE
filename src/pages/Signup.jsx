@@ -14,7 +14,7 @@ function Signup() {
     e.preventDefault();
 
     try {
-      const response = await fetch(`http://localhost:8000/api/v1/user/signup`, {
+      const response = await fetch(`https://my-backend-ocyz.onrender.com/api/v1/user/signup`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -48,7 +48,7 @@ function Signup() {
 
       const token = response.credential
 
-      const userData = await fetch('http://localhost:8000/api/v1/user/login',{
+      const userData = await fetch('https://my-backend-ocyz.onrender.com/api/v1/user/login',{
         method:'POST',
         headers:{
           'Content-Type':'application/json'
