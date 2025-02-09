@@ -8,6 +8,7 @@ import GlowingBtn from '../ui/GlowingBtn';
 import AlsoBought from '../components/alsoBought/AlsoBought';
 import { useNavigate } from 'react-router-dom';
 import Footer from './Footer';
+import CheckOut from './CheckOut';
 
 function FinalProductPage() {
     const { id } = useParams();
@@ -55,7 +56,7 @@ function FinalProductPage() {
                 </div>
                 <div className='md:w-1/2 flex flex-col p-4'>
                     <h2 className='text-3xl font-medium'>{selectedProduct.title}</h2>
-                    <p className='text-2xl font-medium'>${selectedProduct.price}</p>
+                    <p className='text-2xl font-medium'>₹{selectedProduct.price}</p>
                     <p className='text-md font-normal mt-4 text-gray-500'>{selectedProduct.description}</p>
                     <p className='text-md font-normal mt-4 text-gray-500'>Category: <span className='text-black'>{selectedProduct.category}</span></p>
                     <p className='text-md font-normal mt-4 text-gray-500'>Specifications: <span className='text-black'>{selectedProduct.category}</span></p>
@@ -70,7 +71,7 @@ function FinalProductPage() {
                             <span className='font-normal ml-4'>Upload Your Image</span>
                         </div>
                         <div className='mt-4 flex gap-4'>
-                            <Button variant='primary' text='Shop Now' />
+                            <CheckOut totalAmount={selectedProduct.price}/>
                             <Button variant='secondary' text='Add to Cart' onClick={addItemToCart} />
                         </div>
                     </div>

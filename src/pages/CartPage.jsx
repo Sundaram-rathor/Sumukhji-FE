@@ -1,11 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import CartPageProduct from '../components/cart/CartPageProduct';
 import { useRecoilState } from 'recoil';
 import { cartState } from '../utils/Recoil';
+import CheckOut from './CheckOut';
 
 function CartPage() {
-  const [CartProducts] = useRecoilState(cartState);
+  const [CartProducts , setCartProducts] = useRecoilState(cartState);
+  console.log(`cart products : `, CartProducts)
+  const [paymentStatus, setPaymentStatus] = useState(false);
+
+  useEffect(()=>{
+    if(paymentStatus){
+      setCartProducts([])
+      localStorage.removeItem('cart')
+    }
+  },[paymentStatus])
   
   const totalPrice = CartProducts.reduce((acc, item) => acc + item.price, 0);
   
@@ -82,12 +92,7 @@ function CartPage() {
 
                   {/* Checkout Button */}
                   <div className="flex justify-end">
-                    <a
-                      href="#"
-                      className="block w-full sm:w-auto text-center bg-gray-700 hover:bg-gray-600 text-white font-semibold px-5 py-3 rounded transition duration-200"
-                    >
-                      Checkout
-                    </a>
+                    <CheckOut totalAmount={Math.floor(totalPrice)} setPaymentStatus={setPaymentStatus}/>
                   </div>
                 </div>
               </div>
