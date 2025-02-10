@@ -4,7 +4,7 @@ import Button from '../ui/Button';
 function CheckOut({totalAmount, setPaymentStatus}) {
     const handlePayment = async ()=>{
 
-        const res = await fetch('http://localhost:8000/api/v1/user/create-order',{
+        const res = await fetch('https://my-backend-ocyz.onrender.com/api/v1/user/create-order',{
             method:'POST',
             headers:{
                 'Content-Type':'application/json'
@@ -22,8 +22,15 @@ function CheckOut({totalAmount, setPaymentStatus}) {
             name:'Sumukhji',
             description:'sumukhji test payment',
             order_id: order.id,
+            method: {
+                upi: true,  // ✅ Enable UPI for testing
+                upi_link: true,
+                card:true,
+                netbanking : true,
+                wallet:true
+            },
             handler: async (response)=>{
-                const verifyRes = await fetch('http://localhost:8000/api/v1/user/verify-payment',{
+                const verifyRes = await fetch('https://my-backend-ocyz.onrender.com/api/v1/user/verify-payment',{
                     method:'POST',
                     headers:{
                         'Content-Type':'application/json'
@@ -40,10 +47,12 @@ function CheckOut({totalAmount, setPaymentStatus}) {
                     alert('payment failed')
                 }
             },
-            prefill:{
-                name:'Test user',
-                email:'test@gmail.com',
-                contact:'999999999'
+            prefill: {
+                name: 'Test User',
+                email: 'test@gmail.com',
+                contact: '9999999999',
+                method: 'upi',
+                vpa: 'success@razorpay'  // ✅ Simulated UPI ID for testing
             },
             theme:{
                 color:'#3399cc'
