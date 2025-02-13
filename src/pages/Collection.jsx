@@ -32,7 +32,7 @@ function Collection() {
     );
   }
 
-  const products = productsLoadable.contents;
+  const products = productsLoadable.contents.allproducts;
 
   return (
     <div className='h-auto w-full bg-white text-black flex flex-col items-center border-t-2 border-b-2 p-4 sm:p-6 md:p-10'>
@@ -41,9 +41,10 @@ function Collection() {
         <hr className='w-32 sm:w-48 md:w-64 my-4 bg-[#AB96FF] border-0 h-1' />
       </div>
       <div className='h-auto w-full mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 py-6 sm:py-10'>
-        {products.map((item, index) => (
+        { products.map((item, index) => (
           <Product key={index} item={item} />
-        ))}
+        ))
+        }
       </div>
     </div>
   );

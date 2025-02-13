@@ -9,7 +9,9 @@ function Admin() {
     category: '',
     stock: '',
     image: null,
-    specification:''
+    specification:'',
+    sku_id:''
+
   });
 
   const handleInputChange = (e) => {
@@ -36,11 +38,16 @@ function Admin() {
     data.append('price', formData.Price);
     data.append('category', formData.category);
     data.append('stock', formData.stock);
-    data.append('image', formData.image);
+    data.append('productImage', formData.image);
     data.append('specification', formData.specification)
+    data.append('sku_id', formData.sku_id)
     try {
       const response = await fetch(`https://my-backend-ocyz.onrender.com/api/v1/admin/createproduct`, {
         method: 'POST',
+        headers:{
+          
+          token:localStorage.getItem('token')
+        },
         body: data,
       });
 
@@ -93,6 +100,7 @@ function Admin() {
                 { label: 'Category', type: 'text', name: 'category' },
                 { label: 'Stock', type: 'number', name: 'stock' },
                 { label: 'Specification', type: 'text', name: 'specification' },
+                { label: 'sku_id', type: 'text', name: 'sku_id' },
               ].map(({ label, type, name }) => (
                 <div key={name}>
                   <label className="block text-gray-700 font-medium">{label}</label>

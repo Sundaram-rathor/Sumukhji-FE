@@ -5,9 +5,10 @@ import Card from './Card';
 
 function AlsoBought() {
   const allProducts = useRecoilState(allProductsSelector);
+ 
   const topProducts = [];
   for (let i = 0; i < 4; i++) {
-    topProducts.push(allProducts[0][i]);
+    topProducts.push(allProducts[0].allproducts[i]);
   }
   return (
     <div className='mt-20 px-4 max-w-7xl mx-auto'>

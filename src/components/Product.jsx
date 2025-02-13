@@ -12,7 +12,7 @@ function Product({ item }) {
   }, [cart]);
 
   function checkForCart() {
-    return cart.some((cartItem) => cartItem.id === item.id);
+    return cart.some((cartItem) => cartItem.sku_id === item.sku_id);
   }
 
   const isInCart = checkForCart();
@@ -29,7 +29,7 @@ function Product({ item }) {
   const removeItemFromCart = (e) => {
     e.preventDefault();
     if (isInCart) {
-      const filteredCart = cart.filter((currValue) => currValue.id !== item.id);
+      const filteredCart = cart.filter((currValue) => currValue.sku_id !== item.sku_id);
       setCart(filteredCart);
       localStorage.setItem("cart", JSON.stringify(cart));
     }
@@ -37,7 +37,7 @@ function Product({ item }) {
 
   return (
     <div className="relative m-4 w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl overflow-hidden bg-white shadow-md rounded-lg transition-transform hover:scale-105">
-      <a href="#" onClick={() => navigate(`/product/${item.id}`)}>
+      <a  onClick={() => navigate(`/product/${item.sku_id}`)}>
         <img
           className="w-full h-48 sm:h-56 md:h-64 lg:h-72 xl:h-80 object-cover rounded-t-lg"
           src={item.image}
@@ -48,7 +48,7 @@ function Product({ item }) {
         Sale
       </span>
       <div className="mt-4 px-4 sm:px-6 pb-5">
-        <a href="#" onClick={() => navigate(`/product/${item.id}`)}>
+        <a  onClick={() => navigate(`/product/${item.sku_id}`)}>
           <h5 className="text-lg sm:text-xl font-semibold tracking-tight text-slate-900">
             {item.title}
           </h5>
@@ -56,10 +56,10 @@ function Product({ item }) {
         <div className="flex items-center justify-between mt-2">
           <p>
             <span className="text-xl sm:text-2xl font-bold text-slate-900">
-              ${item.price}
+              ₹{item.price}
             </span>
             <span className="ml-2 text-sm text-slate-500 line-through">
-              ${Math.floor(item.price + 10)}
+              ₹{Math.floor(item.price + 10)}
             </span>
           </p>
           <a

@@ -5,13 +5,14 @@ import MailIcon from '../icons/MailIcon'
 import PhoneIcon from '../icons/PhoneIcon'
 import InstaIcon from '../icons/InstaIcon'
 import FacebookIcon from '../icons/FacebookIcon'
+import Footer from './Footer'
 
 function ContactUs() {
   return (
     <div>
-        <div className='bg-black p-4 px-3'><Navbar/></div>
+        <div className='bg-black p-5 px-20'><Navbar/></div>
 
-        <div className='mt-20 px-20'>
+        <div className='mt-20 px-40'>
                 <div className=' text-2xl '>Contact Us</div>
                 <div className='mt-5 text-gray-600'>You need more information? <br /> Check what other persons are saying about our product. <br /> They are very happy with their purchase</div>
                 <div className='mt-10'>
@@ -22,6 +23,7 @@ function ContactUs() {
                     <div className='flex items-center gap-4 mt-4'><FacebookIcon/> Facebook</div>
                 </div>
         </div>
+        <div className='mt-40'><Footer/></div>
     </div>
   )
 }

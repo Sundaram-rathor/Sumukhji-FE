@@ -6,7 +6,7 @@ function CartPageProduct({item}) {
   const [CartProducts, setCartProducts] = useRecoilState(cartState);
 
   function checkForCart(){
-    return CartProducts.some(cartItem => cartItem.id === item.id);
+    return CartProducts.some(cartItem => cartItem.sku_id   === item.sku_id  );
   }
 
   const isInCart = checkForCart();
@@ -14,7 +14,7 @@ function CartPageProduct({item}) {
   const removeFromCart = (e) =>{
     e.preventDefault();
     if(isInCart){
-      const filteredCart = CartProducts.filter((currValue)=>{return currValue.id !== item.id})
+      const filteredCart = CartProducts.filter((currValue)=>{return currValue.sku_id   !== item.sku_id  })
      
 
       setCartProducts(filteredCart)

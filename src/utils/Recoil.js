@@ -28,7 +28,7 @@ export const allProductsSelector = selector({
   key: 'allProductsSelector',
   get: async () => {
     try {
-      const response = await fetch(`https://fakestoreapi.com/products`);
+      const response = await fetch(`https://my-backend-ocyz.onrender.com/api/v1/user/allproducts`);
       if (!response.ok) {
         throw new Error(`Failed to fetch products: ${response.statusText}`);
       }

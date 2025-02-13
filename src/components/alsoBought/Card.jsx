@@ -13,7 +13,7 @@ function Card({ item }) {
   }, [cart]);
 
   function checkForCart() {
-    return cart?.some(cartItem => cartItem.id === item.id);
+    return cart?.some(cartItem => cartItem.sku_id === item.sku_id);
   }
 
   const isInCart = checkForCart();
@@ -28,7 +28,7 @@ function Card({ item }) {
   return (
     <div className='w-full sm:w-full md:w-full lg:w-full p-4 flex flex-col items-center'>
       <div className='relative h-72 w-full max-w-sm rounded-md shadow-lg overflow-hidden cursor-pointer transition-transform transform hover:scale-105' onClick={() => {
-        navigate(`/product/${item.id}`);
+        navigate(`/product/${item.sku_id}`);
         location.reload();
       }}>
         <div className='absolute h-full w-full bg-gradient-to-b from-transparent to-black opacity-50'></div>

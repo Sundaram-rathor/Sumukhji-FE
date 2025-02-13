@@ -13,7 +13,7 @@ function CheckOut({totalAmount, setPaymentStatus}) {
         })
 
         const {order} = await res.json();
-        console.log(order)
+        
         
         const options = {
             key: 'rzp_test_CODl2p6fBTktbl',
@@ -65,7 +65,7 @@ function CheckOut({totalAmount, setPaymentStatus}) {
 
 
   return (
-    <div><Button onClick={handlePayment} variant='primary' text={`Pay ₹${totalAmount}`}/></div>
+    <div><Button onClick={handlePayment} variant='primary' text={`Shop Now`}/></div>
   )
 }
 

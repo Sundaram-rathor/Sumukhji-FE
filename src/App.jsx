@@ -35,7 +35,7 @@ function App() {
               <Route path='/terms&conditions' element={<Terms/>}/>
               <Route path='/privacypolicy' element={<Privacy/>}/>
               <Route path='/contactus' element={<ContactUs/>}/>
-              <Route path='/product/:id' element={<FinalProductPage/>}/>
+              <Route path='/product/:sku_id' element={<FinalProductPage/>}/>
 
 
           </Routes>

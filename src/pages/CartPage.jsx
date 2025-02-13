@@ -50,10 +50,10 @@ function CartPage() {
                   <dl className="space-y-2 text-sm sm:text-base text-gray-700">
                     <div className="flex justify-between">
                       <dt>Subtotal</dt>
-                      <dd>£{totalPrice.toFixed(2)}</dd>
+                      <dd>₹{totalPrice.toFixed(2)}</dd>
                     </div>
 
-                    <div className="flex justify-between">
+                    {/* <div className="flex justify-between">
                       <dt>VAT</dt>
                       <dd>£25</dd>
                     </div>
@@ -61,11 +61,11 @@ function CartPage() {
                     <div className="flex justify-between">
                       <dt>Discount</dt>
                       <dd>-£20</dd>
-                    </div>
+                    </div> */}
 
                     <div className="flex justify-between text-lg font-medium">
                       <dt>Total</dt>
-                      <dd>£{(totalPrice + 25 - 20).toFixed(2)}</dd>
+                      <dd>₹{(totalPrice + 25 - 20).toFixed(2)}</dd>
                     </div>
                   </dl>
 

@@ -11,7 +11,7 @@ import Footer from './Footer';
 import CheckOut from './CheckOut';
 
 function FinalProductPage() {
-    const { id } = useParams();
+    const { sku_id } = useParams();
     const [cart, setCart] = useRecoilState(cartState);
     const navigate = useNavigate();
     const [uploadedImage, setUploadedImage] = useState(null);
@@ -21,7 +21,7 @@ function FinalProductPage() {
     }, [cart]);
 
     function checkForCart() {
-        return cart.some(cartItem => cartItem.id === id);
+        return cart.some(cartItem => cartItem.sku_id === sku_id);
     }
 
     const isInCart = checkForCart();
@@ -34,8 +34,7 @@ function FinalProductPage() {
     };
 
     const allProducts = useRecoilState(allProductsSelector);
-    console.log(allProducts);
-    const selectedProduct = allProducts[0].filter((item) => item.id == id)[0];
+    const selectedProduct = allProducts[0].allproducts.filter((item) => item.sku_id == sku_id)[0];
     console.log(selectedProduct);
     
     return (
