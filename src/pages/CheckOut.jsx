@@ -7,7 +7,8 @@ function CheckOut({totalAmount, setPaymentStatus}) {
         const res = await fetch('https://my-backend-ocyz.onrender.com/api/v1/user/create-order',{
             method:'POST',
             headers:{
-                'Content-Type':'application/json'
+                'Content-Type':'application/json',
+                token:localStorage.getItem('token')
             },
             body: JSON.stringify({amount:totalAmount, currency: 'INR'})
         })
@@ -33,7 +34,8 @@ function CheckOut({totalAmount, setPaymentStatus}) {
                 const verifyRes = await fetch('https://my-backend-ocyz.onrender.com/api/v1/user/verify-payment',{
                     method:'POST',
                     headers:{
-                        'Content-Type':'application/json'
+                        'Content-Type':'application/json',
+                        token:localStorage.getItem('token')
                     },
                     body:JSON.stringify(response)
                 })

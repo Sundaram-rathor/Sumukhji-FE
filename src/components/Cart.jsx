@@ -52,7 +52,7 @@ function Cart({ setCartOpen }) {
 
           {/* Total Price */}
           <div className="text-lg font-semibold text-gray-900 text-center">
-            Total: ${totalPrice.toFixed(2)}
+            Total: ₹{totalPrice.toFixed(2)}
           </div>
 
           {/* Cart Actions */}
