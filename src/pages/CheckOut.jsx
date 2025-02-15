@@ -14,6 +14,7 @@ function CheckOut({totalAmount, setPaymentStatus, userData, selectedProduct}) {
         })
 
         const {order} = await res.json();
+        console.log(order)
         
         
         const options = {
