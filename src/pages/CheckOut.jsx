@@ -1,7 +1,7 @@
 import React from 'react'
 import Button from '../ui/Button';
 
-function CheckOut({totalAmount, setPaymentStatus}) {
+function CheckOut({totalAmount, setPaymentStatus, userData, selectedProduct}) {
     const handlePayment = async ()=>{
 
         const res = await fetch('https://my-backend-ocyz.onrender.com/api/v1/user/create-order',{
@@ -37,7 +37,10 @@ function CheckOut({totalAmount, setPaymentStatus}) {
                         'Content-Type':'application/json',
                         token:localStorage.getItem('token')
                     },
-                    body:JSON.stringify(response)
+                    body:JSON.stringify({
+                        response, 
+                        userData, 
+                        selectedProduct: [selectedProduct]})
                 })
 
                 const jsonResponse = await verifyRes.json();

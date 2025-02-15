@@ -16,6 +16,7 @@ import Terms from './pages/Terms';
 import Privacy from './pages/Privacy';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import ContactUs from './pages/ContactUs';
+import Profile from './pages/Profile';
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
               <Route path='/terms&conditions' element={<Terms/>}/>
               <Route path='/privacypolicy' element={<Privacy/>}/>
               <Route path='/contactus' element={<ContactUs/>}/>
+              <Route path='/profile' element={<Profile/>}/>
               <Route path='/product/:sku_id' element={<FinalProductPage/>}/>
 
 
