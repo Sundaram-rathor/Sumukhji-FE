@@ -1,7 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Button from '../ui/Button';
 
 function CheckOut({totalAmount, setPaymentStatus, userData, selectedProduct}) {
+    const [item, setItem] = useState([])
+    const [paymentMethod,setPaymentMethod] = useState('razorpay');
+
+    selectedProduct.forEach(element => {
+        const obj = {
+            product:element._id,
+            quantity:1,
+            price:element.price
+        }
+
+        setItem((pre)=> [...pre,obj])
+    });
     const handlePayment = async ()=>{
 
         const res = await fetch('https://my-backend-ocyz.onrender.com/api/v1/user/create-order',{
@@ -41,10 +53,13 @@ function CheckOut({totalAmount, setPaymentStatus, userData, selectedProduct}) {
                     body:JSON.stringify({
                         response, 
                         userData, 
-                        selectedProduct: [selectedProduct]})
+                        items: item,
+                        paymentMethod
+                    })
                 })
 
                 const jsonResponse = await verifyRes.json();
+                console.log(jsonResponse)
 
                 if(jsonResponse.success){
                     alert('payment successful')
