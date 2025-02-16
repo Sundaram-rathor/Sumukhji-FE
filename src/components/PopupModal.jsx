@@ -68,7 +68,7 @@ function PopupModal({selectedProduct,setIsPopupOpen }) {
                         </div>
 
                         <div className="mt-4 flex justify-between">
-                            <CheckOut userData={userData} selectedProduct={selectedProduct} setPaymentStatus={setPaymentStatus} totalAmount={selectedProduct.price}/>
+                            <CheckOut userData={userData} selectedProduct={selectedProduct} setPaymentStatus={setPaymentStatus} />
                             <Button variant="secondary" text="Cancel" onClick={handleClosePopup} />
                         </div>
                     </div>

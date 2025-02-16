@@ -1,10 +1,16 @@
 import React, { useState,useEffect } from 'react'
 import Button from '../ui/Button';
 
-function CheckOut({totalAmount, setPaymentStatus, userData, selectedProduct}) {
+function CheckOut({ setPaymentStatus, userData, selectedProduct}) {
     const [item, setItem] = useState([])
     const [paymentMethod,setPaymentMethod] = useState('razorpay');
     console.log(selectedProduct)
+    let totalAmount = 0;
+
+    selectedProduct.forEach(element => {
+        totalAmount += element.price
+    });
+    console.log(totalAmount)
     
     
     useEffect(() => {
