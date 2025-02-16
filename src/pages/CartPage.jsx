@@ -4,11 +4,18 @@ import CartPageProduct from '../components/cart/CartPageProduct';
 import { useRecoilState } from 'recoil';
 import { cartState } from '../utils/Recoil';
 import CheckOut from './CheckOut';
+import Button from '../ui/Button';
+import PopupModal from '../components/PopupModal';
 
 function CartPage() {
   const [CartProducts , setCartProducts] = useRecoilState(cartState);
   console.log(`cart products : `, CartProducts)
   const [paymentStatus, setPaymentStatus] = useState(false);
+  const [popupOpen, setPopupOpen] = useState(false)
+
+  function handleCheckoutClick(){
+    setPopupOpen(true)
+  }
 
   useEffect(()=>{
     if(paymentStatus){
@@ -92,8 +99,14 @@ function CartPage() {
 
                   {/* Checkout Button */}
                   <div className="flex justify-end">
-                    <CheckOut totalAmount={Math.floor(totalPrice)} setPaymentStatus={setPaymentStatus}/>
+                    {/* <CheckOut totalAmount={Math.floor(totalPrice)} setPaymentStatus={setPaymentStatus}/> */}
+                    <Button variant={'primary'} text={'Checkout'} onClick={handleCheckoutClick}/>
                   </div>
+                  {popupOpen && (
+                <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 p-4 overflow-y-scroll">
+                    <PopupModal setIsPopupOpen={setPopupOpen} selectedProduct={CartProducts}/>
+                </div>
+            )}
                 </div>
               </div>
             )}

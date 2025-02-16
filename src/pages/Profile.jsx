@@ -16,7 +16,7 @@ function Profile() {
         }
 
         const response = await fetch(
-          "http://localhost:8000/api/v1/user/getuserinfo",
+          "https://my-backend-ocyz.onrender.com/api/v1/user/getuserinfo",
           {
             headers: { token },
           }

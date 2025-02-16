@@ -1,19 +1,27 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import Button from '../ui/Button';
 
 function CheckOut({totalAmount, setPaymentStatus, userData, selectedProduct}) {
     const [item, setItem] = useState([])
     const [paymentMethod,setPaymentMethod] = useState('razorpay');
-
-    selectedProduct.forEach(element => {
-        const obj = {
-            product:element._id,
-            quantity:1,
-            price:element.price
+    console.log(selectedProduct)
+    
+    
+    useEffect(() => {
+        if (selectedProduct.length > 0) {
+            const mappedItems = selectedProduct.map((element) => ({
+                product: element._id,
+                quantity: 1,
+                price: element.price,
+            }));
+            setItem(mappedItems);
         }
+    }, [selectedProduct]);
 
-        setItem((pre)=> [...pre,obj])
-    });
+    useEffect(() => {
+        console.log("Updated items:", item);  // Log after state updates
+    }, [item]);
+    
     const handlePayment = async ()=>{
 
         const res = await fetch('https://my-backend-ocyz.onrender.com/api/v1/user/create-order',{

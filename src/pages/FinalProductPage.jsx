@@ -79,7 +79,7 @@ function FinalProductPage() {
             {/* Popup Modal */}
             {isPopupOpen && (
                 <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 p-4">
-                    <PopupModal setIsPopupOpen={setIsPopupOpen} selectedProduct={selectedProduct}/>
+                    <PopupModal setIsPopupOpen={setIsPopupOpen} selectedProduct={[selectedProduct]}/>
                 </div>
             )}
         </div>

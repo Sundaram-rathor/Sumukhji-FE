@@ -41,10 +41,14 @@ function PopupModal({selectedProduct,setIsPopupOpen }) {
                         
                         <div className="grid grid-cols-1 gap-4">
                             <div>
-                                <p className="font-medium">Product: {selectedProduct.name}</p>
-                                <p>SKU: {selectedProduct.sku_id}</p>
-                                <p>Quantity: 1</p>
-                                <p>Price: ₹{selectedProduct.price}</p>
+                                {selectedProduct.map((item, index)=>{
+                                    return <div key={index}>
+                                                <p className="font-medium">Product: {item.name}</p>
+                                                <p>SKU: {item.sku_id}</p>
+                                                <p>Quantity: 1</p>
+                                                <p>Price: ₹{item.price}</p>
+                                            </div>
+                                })}
                             </div>
 
                             {/* Input Fields */}
